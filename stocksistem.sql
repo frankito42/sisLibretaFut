@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-08-2021 a las 23:33:53
--- Versión del servidor: 10.4.19-MariaDB
--- Versión de PHP: 8.0.6
+-- Tiempo de generación: 09-02-2022 a las 01:33:15
+-- Versión del servidor: 10.4.11-MariaDB
+-- Versión de PHP: 7.4.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -52,13 +52,14 @@ CREATE TABLE `articulos` (
 --
 
 INSERT INTO `articulos` (`articulo`, `nombre`, `costo`, `stockmin`, `cantidad`, `descripcion`, `imagen`, `categoria`, `codBarra`, `precioVenta`, `idEsta`, `idProveedor`, `mayoritario`, `keyTwoLabor`, `fechaVence`, `menorCentaje`, `mayorCentaje`) VALUES
-(1, 'VACUNA DOG', '60.00', 10, 49, 'a', '', 19, '1', '108.51', 1, 7, '99.44', 1, NULL, '20.00', '10.00'),
+(1, 'VACUNA DOG', '60.00', 10, 100, 'a', '', 19, '1', '108.51', 1, 7, '50.00', 1, NULL, '20.00', '10.00'),
 (2, 'VACUNA CAT', '60.00', 10, -10, 'B', '', 20, '2', '498.99', 1, 7, '461.73', 1, '2022-02-16', '0.00', '0.00'),
-(3, 'CREMA ARMADILLO', '41.00', 10, 148, 'D', '', 24, '3', '194.16', 1, 7, '177.99', 2, '2021-07-10', '20.00', '10.00'),
+(3, 'CREMA ARMADILLO', '50.00', 10, 158, 'D', '', 24, '3', '1000.00', 1, 7, '177.99', 2, '2021-07-10', '20.00', '10.00'),
 (5, 'd', '0.00', 2, 0, 'a', '', 21, '12222222', '0.00', 1, 0, '0.00', 1, '2021-07-21', '0.00', '0.00'),
 (6, 'd', '100.50', 2, 0, 'dsa', '', 21, '123333333333333333333', '432.69', 1, 7, '433.76', 3, '2021-07-16', '0.00', '0.00'),
 (7, 'dddddddddddd', '0.00', 3, 0, 'a', '', 21, '8', '0.00', 1, 0, '0.00', 2, '2021-07-13', '0.00', '0.00'),
-(8, 'pichini', '0.00', 22, 0, 's', '', 19, '123123123123', '0.00', 1, 0, '0.00', 1, '2021-07-05', '0.00', '0.00');
+(8, 'pichini', '0.00', 22, 0, 's', '', 19, '123123123123', '0.00', 1, 0, '0.00', 1, '2021-07-05', '0.00', '0.00'),
+(9, 'cvbdfgb', '0.00', 33, 0, '33333', '', 22, '34234234', '0.00', 2, 0, '0.00', 1, '3333-03-31', '0.00', '0.00');
 
 -- --------------------------------------------------------
 
@@ -98,21 +99,35 @@ CREATE TABLE `detalleventa` (
   `cantidadV` int(11) NOT NULL,
   `precio` decimal(11,2) NOT NULL,
   `fecha` date NOT NULL,
-  `idArticulo` int(11) NOT NULL
+  `idArticulo` int(11) NOT NULL,
+  `estado` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `detalleventa`
 --
 
-INSERT INTO `detalleventa` (`idDetalleVenta`, `idV`, `nombreProducto`, `cantidadV`, `precio`, `fecha`, `idArticulo`) VALUES
-(1, 1, 'VACUNA DOG', 1, '1360.00', '2021-05-11', 1),
-(2, 2, 'VACUNA CAT', 6, '124.50', '2021-06-17', 2),
-(3, 2, 'VACUNA CAT', 2, '107.25', '2021-06-17', 2),
-(4, 3, 'VACUNA CAT', 1, '107.25', '2021-06-17', 2),
-(5, 3, 'VACUNA CAT', 1, '115.90', '2021-06-17', 2),
-(6, 3, 'CREMA ARMADILLO', 1, '52.58', '2021-06-17', 3),
-(7, 3, 'CREMA ARMADILLO', 1, '59.69', '2021-06-17', 3);
+INSERT INTO `detalleventa` (`idDetalleVenta`, `idV`, `nombreProducto`, `cantidadV`, `precio`, `fecha`, `idArticulo`, `estado`) VALUES
+(1, 5, 'VACUNA DOG', 1, '108.51', '2022-02-08', 1, 'PENDIENTE'),
+(2, 6, 'CREMA ARMADILLO', 1, '1000.00', '2022-02-08', 3, 'PENDIENTE'),
+(3, 5, 'VACUNA DOG', 1, '108.51', '2022-02-08', 1, 'PENDIENTE'),
+(4, 5, 'CREMA ARMADILLO', 1, '1000.00', '2022-02-08', 3, 'PENDIENTE'),
+(5, 6, 'VACUNA CAT', 1, '498.99', '2022-02-08', 2, 'PENDIENTE'),
+(6, 6, 'd', 1, '432.69', '2022-02-08', 6, 'PENDIENTE'),
+(7, 8, 'VACUNA DOG', 1, '108.51', '2022-02-08', 1, 'PENDIENTE'),
+(8, 8, 'VACUNA CAT', 1, '498.99', '2022-02-08', 2, 'PENDIENTE'),
+(9, 8, 'CREMA ARMADILLO', 1, '1000.00', '2022-02-08', 3, 'PENDIENTE'),
+(10, 6, 'VACUNA CAT', 1, '498.99', '2022-02-08', 2, 'PENDIENTE'),
+(11, 6, 'VACUNA CAT', 1, '498.99', '2022-02-08', 2, 'PENDIENTE'),
+(12, 9, 'VACUNA DOG', 1, '108.51', '2022-02-08', 1, 'PENDIENTE'),
+(13, 9, 'VACUNA CAT', 1, '498.99', '2022-02-08', 2, 'PENDIENTE'),
+(14, 10, 'VACUNA DOG', 1, '108.51', '2022-02-08', 1, 'PENDIENTE'),
+(15, 10, 'VACUNA CAT', 1, '498.99', '2022-02-08', 2, 'PENDIENTE'),
+(16, 10, 'd', 1, '0.00', '2022-02-08', 5, 'PENDIENTE'),
+(17, 10, 'VACUNA CAT', 1, '498.99', '2022-02-08', 2, 'PENDIENTE'),
+(18, 11, 'VACUNA DOG', 1, '108.51', '2022-02-08', 1, 'PENDIENTE'),
+(19, 11, 'VACUNA CAT', 1, '498.99', '2022-02-08', 2, 'PENDIENTE'),
+(20, 11, 'CREMA ARMADILLO', 1, '1000.00', '2022-02-08', 3, 'PENDIENTE');
 
 -- --------------------------------------------------------
 
@@ -159,7 +174,8 @@ CREATE TABLE `establecimiento` (
 --
 
 INSERT INTO `establecimiento` (`idEsta`, `nombreEsta`) VALUES
-(1, 'Lauchi Danmontti');
+(1, 'Lauchi Danmontti'),
+(2, 'tyhghh');
 
 -- --------------------------------------------------------
 
@@ -185,7 +201,8 @@ INSERT INTO `facturaentrada` (`id`, `idEntrada`, `idArticulo`, `cantidad`, `fech
 (3, 3, 3, 100, '2021-05-11', '1000.00', '0.00'),
 (4, 4, 4, 111, '2021-05-18', '22.00', '0.00'),
 (16, 19, 3, 50, '2021-08-05', '41.00', '0.00'),
-(17, 19, 1, 50, '2021-08-05', '21.00', '0.00');
+(17, 19, 1, 50, '2021-08-05', '21.00', '0.00'),
+(18, 4, 3, 10, '2022-01-07', '50.00', '0.00');
 
 -- --------------------------------------------------------
 
@@ -259,18 +276,23 @@ INSERT INTO `users` (`id`, `user`, `pass`) VALUES
 CREATE TABLE `ventas` (
   `idVenta` int(11) NOT NULL,
   `fechaV` date NOT NULL,
-  `totalV` decimal(11,2) NOT NULL,
-  `idUser` int(11) NOT NULL
+  `totalV` decimal(11,2) DEFAULT 0.00,
+  `idUser` int(11) NOT NULL,
+  `cliente` varchar(100) NOT NULL,
+  `estado` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `ventas`
 --
 
-INSERT INTO `ventas` (`idVenta`, `fechaV`, `totalV`, `idUser`) VALUES
-(1, '2021-05-11', '1360.00', 1),
-(2, '2021-06-17', '961.50', 1),
-(3, '2021-06-17', '335.42', 1);
+INSERT INTO `ventas` (`idVenta`, `fechaV`, `totalV`, `idUser`, `cliente`, `estado`) VALUES
+(5, '2022-02-08', '0.00', 1, 'Francisco Javier Gonzalez', 'pendiente'),
+(6, '2022-02-08', '0.00', 1, 'Matias Mereles', 'pendiente'),
+(8, '2022-02-08', '0.00', 1, 'Aurora Lopez', 'pendiente'),
+(9, '2022-02-08', '0.00', 1, 'mati feo', 'pendiente'),
+(10, '2022-02-08', '0.00', 1, 'negro negro', 'pendiente'),
+(11, '2022-02-08', '0.00', 1, 'hola', 'pendiente');
 
 --
 -- Índices para tablas volcadas
@@ -344,7 +366,7 @@ ALTER TABLE `ventas`
 -- AUTO_INCREMENT de la tabla `articulos`
 --
 ALTER TABLE `articulos`
-  MODIFY `articulo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `articulo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `categoria`
@@ -356,7 +378,7 @@ ALTER TABLE `categoria`
 -- AUTO_INCREMENT de la tabla `detalleventa`
 --
 ALTER TABLE `detalleventa`
-  MODIFY `idDetalleVenta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `idDetalleVenta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `entrada`
@@ -368,13 +390,13 @@ ALTER TABLE `entrada`
 -- AUTO_INCREMENT de la tabla `establecimiento`
 --
 ALTER TABLE `establecimiento`
-  MODIFY `idEsta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idEsta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `facturaentrada`
 --
 ALTER TABLE `facturaentrada`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `laboratorios`
@@ -398,7 +420,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `ventas`
 --
 ALTER TABLE `ventas`
-  MODIFY `idVenta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idVenta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

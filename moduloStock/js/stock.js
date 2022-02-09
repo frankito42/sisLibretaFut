@@ -259,26 +259,7 @@ $(document).ready(async function(){
     /* imagen=`<img style="width: 100%;" src="${element['imagen']}">` */
     /* <td>${element['costo']}</td>
     <td>${element['descripcion']}</td> */
-    if(element['diasPaVencer']<60){
-      tablaArticulos+=`
-      <tr style="background: #ff000030;">
-      <td>${element['nombre']}</td>
-      <td>${element['costo']}</td>
-      <td>${element['precioVenta']}</td>
-      <td>${element['mayoritario']}</td>
-      <td>${element['cantidad']}</td>
-      <td>${element['nombreEsta']}</td>
-      <td>${element['nombreCategoria']}</td>
-      <td>${element['nombreLaboratorio']}</td>
-      <td>${element['diasPaVencer']} Dias</td>
-      
-      <td style="display: inherit;">
-      <button onclick="abrirModalEdit(${element['articulo']})" class="btn btn-blue"><i class="fas fa-pencil-alt fa-2x"></i></button>
-      <button onclick="deleteProduct(${element['articulo']},this)" class="btn btn-danger"><i class="fas fa-trash-alt fa-2x"></i></button>
-      </td>
-      </tr>
-      `
-    }else{
+  
       tablaArticulos+=`
       <tr>
       <td>${element['nombre']}</td>
@@ -288,8 +269,6 @@ $(document).ready(async function(){
       <td>${element['cantidad']}</td>
       <td>${element['nombreEsta']}</td>
       <td>${element['nombreCategoria']}</td>
-      <td>${element['nombreLaboratorio']}</td>
-      <td>${element['diasPaVencer']} Dias</td>
       
       <td style="display: inherit;">
       <button onclick="abrirModalEdit(${element['articulo']})" class="btn btn-blue"><i class="fas fa-pencil-alt fa-2x"></i></button>
@@ -297,7 +276,7 @@ $(document).ready(async function(){
       </td>
       </tr>
       `
-    }
+    
    
   });
   document.getElementById("articulosTabla").innerHTML=tablaArticulos
