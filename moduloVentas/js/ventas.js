@@ -197,8 +197,13 @@ $(document).ready(function(){
                         .then(async(art) => {
                             console.log(art)
                             for  (let indexs = 0; indexs < art.length; indexs++) {
-                                elementos+=`<h6>${art[indexs].nombreProducto} $${art[indexs].precio}</h6>`
-
+                                elementos+=`
+                                <div style="padding:2%;" class="row hoverable">
+                                    <div class="col-md-4">${art[indexs].nombreProducto} </div>
+                                    <div class="col-md-6">$${art[indexs].precio}</div>
+                                    <div class="col-md-2"><button class=" btn-sm btn btn-success"><i class="fa-solid fa-dollar-sign"></i></button></div>
+                                </div>`
+                                
                                 
                             }
                           
