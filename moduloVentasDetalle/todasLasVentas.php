@@ -24,7 +24,7 @@ localStorage.setItem("fechaHoy",fechaaaa)
 <body>
     <section>
         <nav class="mb-1 navbar navbar-expand-lg navbar-dark info-color">
-        <a class="navbar-brand" href="#">Lauchi Damnotti</a>
+        <a class="navbar-brand" href="#">FULL5</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4" aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -55,21 +55,21 @@ localStorage.setItem("fechaHoy",fechaaaa)
                 </a>
                 <div class="dropdown-menu dropdown-default" aria-labelledby="navbarDropdownMenuLink-3">
                 <a class="dropdown-item waves-effect waves-light" href="../moduloProvedor/provedor.php">Proveedores</a>
-                <a class="dropdown-item waves-effect waves-light" href="../moduloLaboratorios/laboratorios.php">Laboratorios</a>
-                <a class="dropdown-item waves-effect waves-light" href="todasLasVentas.php">Caja</a>
+<!--                 <a class="dropdown-item waves-effect waves-light" href="../moduloLaboratorios/laboratorios.php">Laboratorios</a>
+ -->                <a class="dropdown-item waves-effect waves-light" href="todasLasVentas.php">Caja</a>
                 </div>
             </li>
             </ul>
             <ul class="navbar-nav ml-auto">
             <li class="nav-item">
                 <a class="nav-link waves-effect waves-light" href="#">
-                <i class="fas fa-envelope"></i> Contact
+                <i class="fas fa-envelope"></i> Contacto
                 <span class="sr-only">(current)</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link waves-effect waves-light" href="#">
-                <i class="fas fa-gear"></i> Settings</a>
+                <i class="fas fa-gear"></i> Configuraciones</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -86,6 +86,13 @@ localStorage.setItem("fechaHoy",fechaaaa)
     <div class="container">
     <!-- Section: Block Content -->
     
+
+<span>GANANCIA BRUTA: <span id="ganBru"></span></span>
+
+
+
+
+
     <section>
 
     
@@ -163,6 +170,29 @@ localStorage.setItem("fechaHoy",fechaaaa)
         <div class="col-md-6 col-lg-3 mb-4">
 
         <!-- Card -->
+        <div class="card pink lighten-3 white-text">
+            <div class="card-body d-flex justify-content-between align-items-center">
+            <div>
+                <p id="costo" class="h2-responsive font-weight-bold mt-n2 mb-0">$0</p>
+                <p class="mb-0">Costo mensual</p>
+            </div>
+            <div>
+                <!-- <i class="fas fa-user-plus fa-4x text-black-40"></i> -->
+                <i class="fas fa-dollar-sign fa-4x text-black-40"></i>
+            </div>
+            </div>
+            <a id="abarirModalCostos" class="card-footer footer-hover small text-center white-text border-0 p-2">Mas informacion<i class="fas fa-arrow-circle-right pl-2"></i></a>
+        </div>
+        <!-- Card -->
+
+        </div>
+        <!-- Grid column -->
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-6 col-lg-3 mb-4">
+
+        <!-- Card -->
         <div class="card light-blue lighten-1 white-text">
             <div class="card-body d-flex justify-content-between align-items-center">
             <div>
@@ -180,6 +210,7 @@ localStorage.setItem("fechaHoy",fechaaaa)
 
         </div>
         <!-- Grid column -->
+        
 
     </div>
     <!-- Grid row -->
@@ -248,7 +279,7 @@ localStorage.setItem("fechaHoy",fechaaaa)
 
 
     <div class="modal-content">
-      <div class="modal-header">
+      <div style="background: #1ab51a;color: white;" class="modal-header">
         <h4 class="modal-title w-100" id="myModalLabel">Ventas de todos los meses</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -265,6 +296,29 @@ localStorage.setItem("fechaHoy",fechaaaa)
 </div>
     <!-- //////////////////////////////////////////////////////////////////////// -->
     <!-- //////////////////////////////////////////////////////////////////////// -->
+    <div class="modal fade left" id="modalTotalMesesCostos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+
+  <!-- Add class .modal-side and then add class .modal-top-left (or other classes from list above) to set a position to the modal -->
+  <div class="modal-dialog modal-side" role="document">
+
+
+    <div class="modal-content">
+      <div style="color: white;" class="modal-header pink lighten-3">
+        <h4 class="modal-title w-100" id="myModalLabel">Costos de todos los meses</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div id="totalMesesCostos" class="modal-body">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
     <!-- //////////////////////////////////////////////////////////////////////// -->
     <!-- //////////////////////////////////////////////////////////////////////// -->
     

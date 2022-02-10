@@ -3,7 +3,7 @@ require "../../conn/conn.php";
 
 $porcentaje=$_GET['porcentaje'];
 
-    $sqlTodosLosArticulos="SELECT * FROM `articulos` where keyTwoLabor=:id";
+    $sqlTodosLosArticulos="SELECT * FROM `articulos` where categoria=:id";
     $articulos=$conn->prepare($sqlTodosLosArticulos);
     $articulos->bindParam(":id",$_GET['idLab']);
     $articulos->execute();

@@ -3,10 +3,16 @@ session_start();
 if(!isset($_SESSION['user'])){
     header("location:Login/index.html");
 }
+if($_SESSION['user']['user']=='ventas'){
+  header("location:moduloVentas/ventas.php");
+}
+if($_SESSION['user']['user']=='ventas2'){
+  header("location:moduloVentas/ventas.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<head> 
+<head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,7 +24,7 @@ if(!isset($_SESSION['user'])){
 <body>
     <section>
         <nav class="mb-1 navbar navbar-expand-lg navbar-dark info-color">
-        <a class="navbar-brand" href="#">Lauchi Damnotti</a>
+        <a class="navbar-brand" href="#">FULL5</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4" aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -49,27 +55,27 @@ if(!isset($_SESSION['user'])){
                 </a>
                 <div class="dropdown-menu dropdown-default" aria-labelledby="navbarDropdownMenuLink-3">
                 <a class="dropdown-item waves-effect waves-light" href="moduloProvedor/provedor.php">Provedores</a>
-                <a class="dropdown-item waves-effect waves-light" href="../moduloLaboratorios/laboratorios.php">Laboratorios</a>
-                <a class="dropdown-item waves-effect waves-light" href="moduloVentasDetalle/todasLasVentas.php">Caja</a>
+<!--                 <a class="dropdown-item waves-effect waves-light" href="../moduloLaboratorios/laboratorios.php">Laboratorios</a>
+ -->                <a class="dropdown-item waves-effect waves-light" href="moduloVentasDetalle/todasLasVentas.php">Caja</a>
                 </div>
             </li>
             </ul>
             <ul class="navbar-nav ml-auto">
             <li class="nav-item">
                 <a class="nav-link waves-effect waves-light" href="#">
-                <i class="fas fa-envelope"></i> Contact
+                <i class="fas fa-envelope"></i> Contacto
                 <span class="sr-only">(current)</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link waves-effect waves-light" href="#">
-                <i class="fas fa-gear"></i> Settings</a>
+                <i class="fas fa-gear"></i> Configuraciones</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-user"></i> <?php echo $_SESSION['user']['user']?> </a>
                 <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
-                <a class="dropdown-item waves-effect waves-light" href="#">My account</a>
+                <a class="dropdown-item waves-effect waves-light" href="#">Mi cuenta</a>
                 <a class="dropdown-item waves-effect waves-light" href="Login/php/logout.php">Cerrar sesion</a>
                 </div>
             </li>
@@ -110,13 +116,13 @@ if(!isset($_SESSION['user'])){
         <div class="card-body d-flex justify-content-between align-items-center">
           <div>
             <p class="h2-responsive font-weight-bold mt-n2 mb-0">150</p>
-            <p class="mb-0">New Orders</p>
+            <p class="mb-0">Nuevos pedidos</p>
           </div>
           <div>
             <i class="fas fa-shopping-bag fa-4x text-black-40"></i>
           </div>
         </div>
-        <a class="card-footer footer-hover small text-center white-text border-0 p-2">More info<i class="fas fa-arrow-circle-right pl-2"></i></a>
+        <a class="card-footer footer-hover small text-center white-text border-0 p-2">Mas informacion<i class="fas fa-arrow-circle-right pl-2"></i></a>
       </div>
       <!-- Card -->
 
@@ -131,13 +137,13 @@ if(!isset($_SESSION['user'])){
         <div class="card-body d-flex justify-content-between align-items-center">
           <div>
             <p class="h2-responsive font-weight-bold mt-n2 mb-0">53 %</p>
-            <p class="mb-0">Bounce Rate</p>
+            <p class="mb-0">Porcentaje de rebote</p>
           </div>
           <div>
             <i class="fas fa-chart-bar fa-4x text-black-40"></i>
           </div>
         </div>
-        <a class="card-footer footer-hover small text-center white-text border-0 p-2">More info<i class="fas fa-arrow-circle-right pl-2"></i></a>
+        <a class="card-footer footer-hover small text-center white-text border-0 p-2">Mas informacion<i class="fas fa-arrow-circle-right pl-2"></i></a>
       </div>
       <!-- Card -->
 
@@ -152,13 +158,13 @@ if(!isset($_SESSION['user'])){
         <div class="card-body d-flex justify-content-between align-items-center">
           <div>
             <p class="h2-responsive font-weight-bold mt-n2 mb-0">44</p>
-            <p class="mb-0">User Registrations</p>
+            <p class="mb-0">Registros de usuarios</p>
           </div>
           <div>
             <i class="fas fa-user-plus fa-4x text-black-40"></i>
           </div>
         </div>
-        <a class="card-footer footer-hover small text-center white-text border-0 p-2">More info<i class="fas fa-arrow-circle-right pl-2"></i></a>
+        <a class="card-footer footer-hover small text-center white-text border-0 p-2">Mas informacion<i class="fas fa-arrow-circle-right pl-2"></i></a>
       </div>
       <!-- Card -->
 
@@ -173,13 +179,13 @@ if(!isset($_SESSION['user'])){
         <div class="card-body d-flex justify-content-between align-items-center">
           <div>
             <p style="color:white;" class="h2-responsive font-weight-bold mt-n2 mb-0">65</p>
-            <p style="color:white;" class="mb-0">Unique Visitors</p>
+            <p style="color:white;" class="mb-0">Visitantes únicos</p>
           </div>
           <div>
             <i class="fas fa-chart-pie fa-4x text-black-40"></i>
           </div>
         </div>
-        <a class="card-footer footer-hover small text-center white-text border-0 p-2">More info<i class="fas fa-arrow-circle-right pl-2"></i></a>
+        <a class="card-footer footer-hover small text-center white-text border-0 p-2">Mas informacion<i class="fas fa-arrow-circle-right pl-2"></i></a>
       </div>
       <!-- Card -->
 
@@ -210,7 +216,7 @@ if(!isset($_SESSION['user'])){
           <h5 class="text-center font-weight-bold mb-4">Hoy</h5>
 
           <div class="d-flex justify-content-between">
-            <small class="text-muted">Add products to cart</small>
+            <small class="text-muted">Nuevos productos</small>
             <small><span><strong>160</strong></span>/<span></span>200</small>
           </div>
           <div class="progress md-progress">
@@ -219,7 +225,7 @@ if(!isset($_SESSION['user'])){
           </div>
 
           <div class="d-flex justify-content-between">
-            <small class="text-muted">Complete Purchase</small>
+            <small class="text-muted">Compras completadas</small>
             <small><span><strong>310</strong></span>/<span></span>400</small>
           </div>
           <div class="progress md-progress">
@@ -228,7 +234,7 @@ if(!isset($_SESSION['user'])){
           </div>
 
           <div class="d-flex justify-content-between">
-            <small class="text-muted">Visit Premium Page</small>
+            <small class="text-muted">Sis premium</small>
             <small><span><strong>480</strong></span>/<span></span>800</small>
           </div>
           <div class="progress md-progress">
@@ -237,7 +243,7 @@ if(!isset($_SESSION['user'])){
           </div>
 
           <div class="d-flex justify-content-between">
-            <small class="text-muted">Send Inquiries</small>
+            <small class="text-muted">Consultas</small>
             <small><span><strong>250</strong></span>/<span></span>500</small>
           </div>
           <div class="progress md-progress">
@@ -254,7 +260,7 @@ if(!isset($_SESSION['user'])){
           <h5 class="text-center font-weight-bold mb-4">Ayer</h5>
 
           <div class="d-flex justify-content-between">
-            <small class="text-muted">Add products to cart</small>
+            <small class="text-muted">Nuevos productos</small>
             <small><span><strong>160</strong></span>/<span></span>200</small>
           </div>
           <div class="progress md-progress">
@@ -263,7 +269,7 @@ if(!isset($_SESSION['user'])){
           </div>
 
           <div class="d-flex justify-content-between">
-            <small class="text-muted">Complete Purchase</small>
+            <small class="text-muted">Compras completadas</small>
             <small><span><strong>310</strong></span>/<span></span>400</small>
           </div>
           <div class="progress md-progress">
@@ -272,7 +278,7 @@ if(!isset($_SESSION['user'])){
           </div>
 
           <div class="d-flex justify-content-between">
-            <small class="text-muted">Visit Premium Page</small>
+            <small class="text-muted">Sis premium</small>
             <small><span><strong>480</strong></span>/<span></span>800</small>
           </div>
           <div class="progress md-progress">
@@ -281,7 +287,7 @@ if(!isset($_SESSION['user'])){
           </div>
 
           <div class="d-flex justify-content-between">
-            <small class="text-muted">Send Inquiries</small>
+            <small class="text-muted">Consultas</small>
             <small><span><strong>250</strong></span>/<span></span>500</small>
           </div>
           <div class="progress md-progress">

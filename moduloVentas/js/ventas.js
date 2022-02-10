@@ -174,7 +174,7 @@ $(document).ready(function(){
                 <div onclick="abrirModalProductos(${data[index].idVenta},event)" class="col-md-4">
                     <div style="margin-bottom: 3%;" class="card">
                         <div class="card-body">
-                        <h5 style="background: #33b5e5;PADDING: 2%;border-radius: 5px;color: white;" class="card-title">${data[index].cliente}</h5>
+                        <h5 style="font-weight: bold;background: #33b5e5;PADDING: 2%;border-radius: 5px;color: white;" class="card-title">${data[index].cliente}</h5>
                         <hr>`
                 
                         await fetch("php/articulosDeCliente.php?id="+data[index].idVenta)

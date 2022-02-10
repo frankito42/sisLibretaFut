@@ -18,7 +18,7 @@ if(!isset($_SESSION['user'])){
 <body>
     <section>
         <nav class="mb-1 navbar navbar-expand-lg navbar-dark info-color">
-        <a class="navbar-brand" href="#">Lauchi Damnotti</a>
+        <a class="navbar-brand" href="#">FULL5</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4" aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -49,21 +49,21 @@ if(!isset($_SESSION['user'])){
                 </a>
                 <div class="dropdown-menu dropdown-default" aria-labelledby="navbarDropdownMenuLink-3">
                 <a class="dropdown-item waves-effect waves-light" href="../moduloProvedor/provedor.php">Proveedores</a>
-                <a class="dropdown-item waves-effect waves-light" href="../moduloLaboratorios/laboratorios.php">Laboratorios</a>
-                <a class="dropdown-item waves-effect waves-light" href="../moduloVentasDetalle/todasLasVentas.php">Caja</a>
+<!--                 <a class="dropdown-item waves-effect waves-light" href="../moduloLaboratorios/laboratorios.php">Laboratorios</a>
+ -->                <a class="dropdown-item waves-effect waves-light" href="../moduloVentasDetalle/todasLasVentas.php">Caja</a>
                 </div>
             </li>
             </ul>
             <ul class="navbar-nav ml-auto">
             <li class="nav-item">
                 <a class="nav-link waves-effect waves-light" href="#">
-                <i class="fas fa-envelope"></i> Contact
+                <i class="fas fa-envelope"></i> Contacto
                 <span class="sr-only">(current)</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link waves-effect waves-light" href="#">
-                <i class="fas fa-gear"></i> Settings</a>
+                <i class="fas fa-gear"></i> Configuraciones</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -95,7 +95,7 @@ if(!isset($_SESSION['user'])){
                 <div class="col-sm">
                     <button data-toggle="modal" style="background:#a160b6e6;" data-target="#modalNewEstablecimiento" class="btn btn-sm"><i class="fas fa-plus fa-2x"></i></button>
                     <button data-toggle="modal" data-target="#modalPorcentaje" class="btn aqua-gradient btn-sm"><i class="fas fa-percentage fa-2x"></i> <span style="position: absolute;left: 15%;font-size: smaller;top: 25%;background: #ff3f86a1;padding: 5%;"> General</span></button>
-                    <button data-toggle="modal" data-target="#modalPorcentajeLaboratorio" class="btn blue-gradient btn-sm"><i class="fas fa-percentage fa-2x"></i> <span style="position: absolute;left: 0%;font-size: smaller;top: 25%;background: #ff3f86a1;padding: 5%;"> Laboratorio</span></button>
+                    <button data-toggle="modal" data-target="#modalPorcentajeLaboratorio" class="btn blue-gradient btn-sm"><i class="fas fa-percentage fa-2x"></i> <span style="position: absolute;left: 8%;font-size: smaller;top: 25%;background: #ff3f86a1;padding: 5%;"> Categoria</span></button>
                 </div>
 
             
@@ -115,9 +115,11 @@ if(!isset($_SESSION['user'])){
                         <th style="white-space: nowrap;">Precio por menor</th>
                         <th>Precio por mayor</th>
                         <th>Stock</th>
-                        <th>Establecimiento</th>
+                        <!-- <th>Establecimiento</th> -->
                         <th>Categoria</th>
-                      <!--   <th>Img</th> -->
+                        
+                        <!-- <th>Vence</th> -->
+                        <th>Img</th>
                         <th>Acción</th>
                     </thead>
                     <tbody id="articulosTabla">
@@ -209,8 +211,8 @@ if(!isset($_SESSION['user'])){
 				</div>
                 <!-- ////////////////////////////////////////////////// -->
                 <!-- ////////////////////////////////////////////////// -->
-				<div class="col">
-                <select id="laboratoriosSearch" required autofocus class="mdb-select md-form" searchable="Buscar">
+				<div style="display: none;" class="col">
+                <select id="laboratoriosSearch" autofocus class="mdb-select md-form" searchable="Buscar">
                 </select>
 				</div>
                 <!-- ////////////////////////////////////////////////// -->

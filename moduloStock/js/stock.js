@@ -31,8 +31,22 @@ async function listarLaboratorios() {
     data.forEach(element => {
       option+=`<option value="${element.idLaboratorio}">${element.nombreLaboratorio}</option>`
     });
-    document.getElementById("selectLaboratorioAumentar").innerHTML=option
+    /* document.getElementById("selectLaboratorioAumentar").innerHTML=option */
     document.getElementById("laboratoriosSearch").innerHTML=option
+  });
+    
+}
+async function listarCategorias() {
+  await fetch('php/listarCategorias.php')
+  .then(response => response.json())
+  .then(async (data)=>{
+    console.log(data)
+    let option=`<option value="" selected disabled>Seleccionar Categoria</option>`
+    data.forEach(element => {
+      option+=`<option value="${element.idCategoria}">${element.nombreCategoria}</option>`
+    });
+    /* document.getElementById("selectLaboratorioAumentar").innerHTML=option */
+    document.getElementById("selectLaboratorioAumentar").innerHTML=option
   });
     
 }
@@ -94,6 +108,7 @@ $(document).ready(async function(){
     await dibujarSelect(todosLosArticulosCategorias[2])
     await listarProveedores()
     await listarLaboratorios()
+    await listarCategorias()
     
     
     $('.mdb-select').materialSelect();
@@ -131,12 +146,12 @@ $(document).ready(async function(){
         `
       });
 
-      let optionsLabor=``
+     /*  let optionsLabor=``
       todosLosArticulosCategorias[3].forEach(element => {
         optionsLabor+=`
         <option ${(element.idLaboratorio==filtroArray.keyTwoLabor)?"selected":""} value="${element.idLaboratorio}">${element.nombreLaboratorio}</option>
         `
-      });
+      }); */
       let modalEdit=`
                 <div class="modal fade" id="articulo${id}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -222,13 +237,7 @@ $(document).ready(async function(){
                         
                         </select>
                     </div>
-                    <div class="col">
-                        <select id="selectLaborEdit${id}" required class="form-control">
-                        <option value="">Laboratorios</option>
-                        ${optionsLabor}
-                        
-                        </select>
-                    </div>
+                    
                   
                     
                     </div>
@@ -243,7 +252,19 @@ $(document).ready(async function(){
                     </div>
                 </div>
               </div>`
+        /* 
         
+        
+        <div class="col">
+                        <select id="selectLaborEdit${id}" required class="form-control">
+                        <option value="">Laboratorios</option>
+                        ${optionsLabor}
+                        
+                        </select>
+                    </div>
+        
+        
+        */
               $(modalEdit).modal("show")
     }
    
@@ -256,19 +277,24 @@ $(document).ready(async function(){
   let imagen=``
   console.log(articulosStock)
   articulosStock.forEach(element => {
-    /* imagen=`<img style="width: 100%;" src="${element['imagen']}">` */
+    imagen=`<img style="width: 100%;" src="${element['imagen']}">`
     /* <td>${element['costo']}</td>
-    <td>${element['descripcion']}</td> */
-  
+    <td>${element['descripcion']}</td>
+    <td>${element['diasPaVencer']} Dias</td>
+    <td>${element['nombreEsta']}</td>
+    */
+    /* if(element['diasPaVencer']<60){
       tablaArticulos+=`
-      <tr>
+      <tr style="background: #ff000030;">
       <td>${element['nombre']}</td>
       <td>${element['costo']}</td>
       <td>${element['precioVenta']}</td>
       <td>${element['mayoritario']}</td>
       <td>${element['cantidad']}</td>
-      <td>${element['nombreEsta']}</td>
       <td>${element['nombreCategoria']}</td>
+      <td>${imagen}</td>
+      
+      
       
       <td style="display: inherit;">
       <button onclick="abrirModalEdit(${element['articulo']})" class="btn btn-blue"><i class="fas fa-pencil-alt fa-2x"></i></button>
@@ -276,7 +302,24 @@ $(document).ready(async function(){
       </td>
       </tr>
       `
-    
+    }else{ */
+      tablaArticulos+=`
+      <tr>
+      <td>${element['nombre']}</td>
+      <td>${element['costo']}</td>
+      <td>${element['precioVenta']}</td>
+      <td>${element['mayoritario']}</td>
+      <td>${element['cantidad']}</td>
+      <td>${element['nombreCategoria']}</td>
+      <td>${imagen}</td>
+      
+      <td style="display: inherit;">
+      <button onclick="abrirModalEdit(${element['articulo']})" class="btn btn-blue"><i class="fas fa-pencil-alt fa-2x"></i></button>
+      <button onclick="deleteProduct(${element['articulo']},this)" class="btn btn-danger"><i class="fas fa-trash-alt fa-2x"></i></button>
+      </td>
+      </tr>
+      `
+   /*  } */
    
   });
   document.getElementById("articulosTabla").innerHTML=tablaArticulos
@@ -379,7 +422,7 @@ $(document).ready(async function(){
         stockMinA:document.getElementById("stockMinA"),
         descripcionNewA:document.getElementById("descripcionNewA"),
         categoriaNew:document.getElementById("categoriaNew"),
-        laboratoriosSearch:document.getElementById("laboratoriosSearch"),
+        /* laboratoriosSearch:document.getElementById("laboratoriosSearch"), */
         fechaVencimiento:document.getElementById("fechaVencimiento")
         /* codBarraNew:document.getElementById("codBarraNew") */
       };
@@ -389,7 +432,7 @@ $(document).ready(async function(){
         stockMinA:document.getElementById("stockMinA").value,
         descripcionNewA:document.getElementById("descripcionNewA").value,
         categoriaNew:document.getElementById("categoriaNew").value,
-        laboratoriosSearch:document.getElementById("laboratoriosSearch").value,
+        /* laboratoriosSearch:document.getElementById("laboratoriosSearch").value, */
         codBarraNew:document.getElementById("codBarraNew").value,
         fechaVencimiento:document.getElementById("fechaVencimiento").value
       };
@@ -459,7 +502,7 @@ $(document).ready(async function(){
     cantidadEdit:document.getElementById("cantidadEdit"+id).value,
     descripcionEdit:document.getElementById("descripcionEdit"+id).value,
     categoriaEdit:document.getElementById("selectCategoriaEdit"+id).value,
-    labor:document.getElementById("selectLaborEdit"+id).value,
+    labor:0,
     codBarraEdit:document.getElementById("codBarraEdit"+id).value,
     precioMayo:document.getElementById("precioMayo"+id).value
   };

@@ -11,7 +11,7 @@ if(isset($_FILES["archivo"])){
 
     $sqlAddNewProduct="INSERT INTO `articulos`(`nombre`, `stockmin`,
     `descripcion`, `imagen`, `categoria`, `codBarra`,
-    `idEsta`,`keyTwoLabor`,fechaVence) VALUES
+    `idEsta`,fechaVence) VALUES
        (:nombre,
         :stockmin,
         :descripcion,
@@ -19,7 +19,7 @@ if(isset($_FILES["archivo"])){
         :categoria,
         :codBarra,
         :idEsta,
-        :labor,
+        
         :fechaVence)";
     $addNewProduct=$conn->prepare($sqlAddNewProduct);
     $addNewProduct->bindParam(":nombre",$articulo->nombre);
@@ -29,7 +29,7 @@ if(isset($_FILES["archivo"])){
     $addNewProduct->bindParam(":categoria",$articulo->categoriaNew);
     $addNewProduct->bindParam(":codBarra",$articulo->codBarraNew);
     $addNewProduct->bindParam(":idEsta",$articulo->establecimiento);
-    $addNewProduct->bindParam(":labor",$articulo->laboratoriosSearch);
+    
     $addNewProduct->bindParam(":fechaVence",$articulo->fechaVencimiento);
 
     if($addNewProduct->execute()){

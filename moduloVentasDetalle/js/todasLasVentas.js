@@ -5,6 +5,11 @@ document.addEventListener("DOMContentLoaded",async function() {
     await ventasMonth()
     await productosMasVendidos()
     await totalTodosLosMese()
+    await costoMonth()
+    await totalCostosMensu()
+    setTimeout(async() => {
+        await totalBruto()
+    }, 10000);
 });
 
 document.getElementById("fechaI").addEventListener("change",async ()=>{
@@ -47,9 +52,59 @@ async function ventasMonth() {
     .then(response => response.json())
     .then(async (data)=>{
         console.log(data)
+        localStorage.setItem('ventaM', (data.totalMes==null)?0:data.totalMes);
         document.getElementById("ventasDelMes").innerHTML=(data.totalMes==null)?"$"+0:data.totalMes
     });
 }
+
+
+
+async function costoMonth() {
+    fetch('../consultasAzar/costoDelMes.php')
+    .then(response => response.json())
+    .then(async (data)=>{
+        console.log(data)
+        localStorage.setItem('costoM', (data.costo==null)?0:data.costo);
+        document.getElementById("costo").innerHTML=(data.costo==null)?"$"+0:data.costo
+    });
+}
+/* ////////////////////////////////////////////////// */
+/* ////////////////////////////////////////////////// */
+/* ////////////////////////////////////////////////// */
+/* ////////////////////////////////////////////////// */
+/* ////////////////////////////////////////////////// */
+async function totalCostosMensu() {
+    fetch('../consultasAzar/costosMensuales.php')
+    .then(response => response.json())
+    .then(async (data)=>{
+        console.log(data)
+        let coss=``
+        data.forEach(element => {
+            coss+=`
+                <h4>${element.mes}: <span style="border-bottom-style: outset;border-color: #4eff4eb8;">$${element.totalMes }</span></h4>
+            `
+        });
+        document.getElementById("totalMesesCostos").innerHTML=coss
+    });
+}
+/* ////////////////////////////////////////////////// */
+/* ////////////////////////////////////////////////// */
+/* ////////////////////////////////////////////////// */
+/* ////////////////////////////////////////////////// */
+/* ////////////////////////////////////////////////// */
+/* ////////////////////////////////////////////////// */
+/* ////////////////////////////////////////////////// */
+
+
+
+
+
+
+
+
+
+
+
 async function totalTodosLosMese() {
     fetch('../consultasAzar/totalTodosLosMeses.php')
     .then(response => response.json())
@@ -332,3 +387,15 @@ async function mostrarLosProductosMasVendidosFiltro(productos) {
 document.getElementById("modalMesVendi").addEventListener("click",()=>{
     $("#totalMesesModal").modal("show")
 })
+document.getElementById("abarirModalCostos").addEventListener("click",()=>{
+    $("#modalTotalMesesCostos").modal("show")
+})
+
+
+async function totalBruto() {
+    let bruto=localStorage.getItem("ventaM")-localStorage.getItem("costoM")
+    bruto=(bruto<=0)?0:bruto
+    document.getElementById("ganBru").innerHTML="$"+bruto
+    console.log(localStorage.getItem("ventaM"))
+    console.log(localStorage.getItem("costoM"))
+}

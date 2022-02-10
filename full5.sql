@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-02-2022 a las 01:33:15
--- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.4.5
+-- Tiempo de generación: 10-02-2022 a las 16:43:21
+-- Versión del servidor: 10.4.19-MariaDB
+-- Versión de PHP: 8.0.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `stocksistem`
+-- Base de datos: `full5`
 --
 
 -- --------------------------------------------------------
@@ -52,14 +52,14 @@ CREATE TABLE `articulos` (
 --
 
 INSERT INTO `articulos` (`articulo`, `nombre`, `costo`, `stockmin`, `cantidad`, `descripcion`, `imagen`, `categoria`, `codBarra`, `precioVenta`, `idEsta`, `idProveedor`, `mayoritario`, `keyTwoLabor`, `fechaVence`, `menorCentaje`, `mayorCentaje`) VALUES
-(1, 'VACUNA DOG', '60.00', 10, 100, 'a', '', 19, '1', '108.51', 1, 7, '50.00', 1, NULL, '20.00', '10.00'),
-(2, 'VACUNA CAT', '60.00', 10, -10, 'B', '', 20, '2', '498.99', 1, 7, '461.73', 1, '2022-02-16', '0.00', '0.00'),
-(3, 'CREMA ARMADILLO', '50.00', 10, 158, 'D', '', 24, '3', '1000.00', 1, 7, '177.99', 2, '2021-07-10', '20.00', '10.00'),
-(5, 'd', '0.00', 2, 0, 'a', '', 21, '12222222', '0.00', 1, 0, '0.00', 1, '2021-07-21', '0.00', '0.00'),
-(6, 'd', '100.50', 2, 0, 'dsa', '', 21, '123333333333333333333', '432.69', 1, 7, '433.76', 3, '2021-07-16', '0.00', '0.00'),
-(7, 'dddddddddddd', '0.00', 3, 0, 'a', '', 21, '8', '0.00', 1, 0, '0.00', 2, '2021-07-13', '0.00', '0.00'),
-(8, 'pichini', '0.00', 22, 0, 's', '', 19, '123123123123', '0.00', 1, 0, '0.00', 1, '2021-07-05', '0.00', '0.00'),
-(9, 'cvbdfgb', '0.00', 33, 0, '33333', '', 22, '34234234', '0.00', 2, 0, '0.00', 1, '3333-03-31', '0.00', '0.00');
+(1, 'CANCHA', '1500.00', 10, 9986, 'a', '', 19, '1', '1500.00', 1, 7, '1300.00', 0, NULL, '20.00', '10.00'),
+(2, 'Corona 710', '350.00', 10, 69, 'CORONA 710', '', 22, '123', '450.00', 1, 7, '450.00', 0, '2022-02-16', '0.00', '0.00'),
+(3, 'Quilmes 710', '200.00', 10, 86, 'QUILMES 710', '', 22, '1234', '300.00', 1, 7, '300.00', 0, '2021-07-10', '20.00', '10.00'),
+(5, 'Coca 3L', '247.50', 10, 91, 'COCA 3L', '', 21, '123456', '350.00', 1, 0, '350.00', 0, '2021-07-21', '0.00', '0.00'),
+(6, 'Miller 710', '247.50', 10, 98, 'Miller 710', '', 21, '123456', '350.00', 1, 7, '350.00', 0, '2021-07-16', '0.00', '0.00'),
+(7, 'Brahama 710', '198.00', 10, 96, 'Brahama 710', '', 21, '1234567', '300.00', 1, 0, '300.00', 0, '2021-07-13', '0.00', '0.00'),
+(8, 'Sol 330ML', '150.00', 10, 100, 'sol botellita 330', '', 19, '123456789', '200.00', 1, 0, '200.00', 0, '2021-07-05', '0.00', '0.00'),
+(9, 'Speed', '150.00', 10, 98, 'speed', '', 22, '1233456', '200.00', 2, 0, '200.00', 0, '3333-03-31', '0.00', '0.00');
 
 -- --------------------------------------------------------
 
@@ -108,26 +108,51 @@ CREATE TABLE `detalleventa` (
 --
 
 INSERT INTO `detalleventa` (`idDetalleVenta`, `idV`, `nombreProducto`, `cantidadV`, `precio`, `fecha`, `idArticulo`, `estado`) VALUES
-(1, 5, 'VACUNA DOG', 1, '108.51', '2022-02-08', 1, 'PENDIENTE'),
-(2, 6, 'CREMA ARMADILLO', 1, '1000.00', '2022-02-08', 3, 'PENDIENTE'),
-(3, 5, 'VACUNA DOG', 1, '108.51', '2022-02-08', 1, 'PENDIENTE'),
-(4, 5, 'CREMA ARMADILLO', 1, '1000.00', '2022-02-08', 3, 'PENDIENTE'),
-(5, 6, 'VACUNA CAT', 1, '498.99', '2022-02-08', 2, 'PENDIENTE'),
-(6, 6, 'd', 1, '432.69', '2022-02-08', 6, 'PENDIENTE'),
-(7, 8, 'VACUNA DOG', 1, '108.51', '2022-02-08', 1, 'PENDIENTE'),
-(8, 8, 'VACUNA CAT', 1, '498.99', '2022-02-08', 2, 'PENDIENTE'),
-(9, 8, 'CREMA ARMADILLO', 1, '1000.00', '2022-02-08', 3, 'PENDIENTE'),
-(10, 6, 'VACUNA CAT', 1, '498.99', '2022-02-08', 2, 'PENDIENTE'),
-(11, 6, 'VACUNA CAT', 1, '498.99', '2022-02-08', 2, 'PENDIENTE'),
-(12, 9, 'VACUNA DOG', 1, '108.51', '2022-02-08', 1, 'PENDIENTE'),
-(13, 9, 'VACUNA CAT', 1, '498.99', '2022-02-08', 2, 'PENDIENTE'),
-(14, 10, 'VACUNA DOG', 1, '108.51', '2022-02-08', 1, 'PENDIENTE'),
-(15, 10, 'VACUNA CAT', 1, '498.99', '2022-02-08', 2, 'PENDIENTE'),
-(16, 10, 'd', 1, '0.00', '2022-02-08', 5, 'PENDIENTE'),
-(17, 10, 'VACUNA CAT', 1, '498.99', '2022-02-08', 2, 'PENDIENTE'),
-(18, 11, 'VACUNA DOG', 1, '108.51', '2022-02-08', 1, 'PENDIENTE'),
-(19, 11, 'VACUNA CAT', 1, '498.99', '2022-02-08', 2, 'PENDIENTE'),
-(20, 11, 'CREMA ARMADILLO', 1, '1000.00', '2022-02-08', 3, 'PENDIENTE');
+(1, 5, 'VACUNA DOG', 1, '108.51', '2022-02-08', 1, 'PAGADO'),
+(2, 6, 'CREMA ARMADILLO', 1, '1000.00', '2022-02-08', 3, 'PAGADO'),
+(3, 5, 'VACUNA DOG', 1, '108.51', '2022-02-08', 1, 'PAGADO'),
+(4, 5, 'CREMA ARMADILLO', 1, '1000.00', '2022-02-08', 3, 'PAGADO'),
+(5, 6, 'VACUNA CAT', 1, '498.99', '2022-02-08', 2, 'PAGADO'),
+(6, 6, 'd', 1, '432.69', '2022-02-08', 6, 'PAGADO'),
+(7, 8, 'VACUNA DOG', 1, '108.51', '2022-02-08', 1, 'PAGADO'),
+(8, 8, 'VACUNA CAT', 1, '498.99', '2022-02-08', 2, 'PAGADO'),
+(9, 8, 'CREMA ARMADILLO', 1, '1000.00', '2022-02-08', 3, 'PAGADO'),
+(10, 6, 'VACUNA CAT', 1, '498.99', '2022-02-08', 2, 'PAGADO'),
+(11, 6, 'VACUNA CAT', 1, '498.99', '2022-02-08', 2, 'PAGADO'),
+(12, 9, 'VACUNA DOG', 1, '108.51', '2022-02-08', 1, 'PAGADO'),
+(13, 9, 'VACUNA CAT', 1, '498.99', '2022-02-08', 2, 'PAGADO'),
+(14, 10, 'VACUNA DOG', 1, '108.51', '2022-02-08', 1, 'PAGADO'),
+(15, 10, 'VACUNA CAT', 1, '498.99', '2022-02-08', 2, 'PAGADO'),
+(16, 10, 'd', 1, '0.00', '2022-02-08', 5, 'PAGADO'),
+(17, 10, 'VACUNA CAT', 1, '498.99', '2022-02-08', 2, 'PAGADO'),
+(18, 11, 'VACUNA DOG', 1, '108.51', '2022-02-08', 1, 'PAGADO'),
+(19, 11, 'VACUNA CAT', 1, '498.99', '2022-02-08', 2, 'PAGADO'),
+(20, 11, 'CREMA ARMADILLO', 1, '1000.00', '2022-02-08', 3, 'PAGADO'),
+(21, 5, 'cvbdfgb', 1, '0.00', '2022-02-09', 9, 'PAGADO'),
+(22, 5, 'VACUNA DOG', 1, '108.51', '2022-02-09', 1, 'PAGADO'),
+(23, 6, 'CREMA ARMADILLO', 1, '1000.00', '2022-02-09', 3, 'PAGADO'),
+(24, 5, 'VACUNA CAT', 1, '498.99', '2022-02-09', 2, 'PAGADO'),
+(25, 12, 'VACUNA DOG', 1, '108.51', '2022-02-09', 1, 'PAGADO'),
+(26, 13, 'CANCHA', 1, '1500.00', '2022-02-10', 1, 'PAGADO'),
+(27, 13, 'Corona 710', 1, '450.00', '2022-02-10', 2, 'PAGADO'),
+(28, 13, 'Quilmes 710', 1, '300.00', '2022-02-10', 3, 'PAGADO'),
+(29, 13, 'Coca 3L', 1, '350.00', '2022-02-10', 5, 'PAGADO'),
+(30, 13, 'Coca 3L', 1, '350.00', '2022-02-10', 5, 'PAGADO'),
+(31, 13, 'Coca 3L', 1, '350.00', '2022-02-10', 5, 'PAGADO'),
+(32, 13, 'Corona 710', 1, '450.00', '2022-02-10', 2, 'PAGADO'),
+(33, 13, 'Corona 710', 1, '450.00', '2022-02-10', 2, 'PAGADO'),
+(34, 13, 'Corona 710', 1, '450.00', '2022-02-10', 2, 'PAGADO'),
+(35, 13, 'Corona 710', 1, '450.00', '2022-02-10', 2, 'PAGADO'),
+(36, 13, 'Corona 710', 1, '450.00', '2022-02-10', 2, 'PAGADO'),
+(37, 14, 'CANCHA', 1, '1500.00', '2022-02-10', 1, 'PAGADO'),
+(38, 14, 'Corona 710', 1, '450.00', '2022-02-10', 2, 'PAGADO'),
+(39, 14, 'Corona 710', 1, '450.00', '2022-02-10', 2, 'PAGADO'),
+(40, 14, 'Corona 710', 1, '450.00', '2022-02-10', 2, 'PAGADO'),
+(41, 14, 'Quilmes 710', 1, '300.00', '2022-02-10', 3, 'PAGADO'),
+(42, 14, 'Quilmes 710', 1, '300.00', '2022-02-10', 3, 'PAGADO'),
+(43, 14, 'Brahama 710', 1, '300.00', '2022-02-10', 7, 'PAGADO'),
+(44, 14, 'Brahama 710', 1, '300.00', '2022-02-10', 7, 'PAGADO'),
+(45, 14, 'Coca 3L', 1, '350.00', '2022-02-10', 5, 'PAGADO');
 
 -- --------------------------------------------------------
 
@@ -265,7 +290,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `user`, `pass`) VALUES
-(1, 'pancho', '123');
+(1, 'admin', '123'),
+(2, 'ventas', '123'),
+(3, 'ventas2', '123');
 
 -- --------------------------------------------------------
 
@@ -287,12 +314,15 @@ CREATE TABLE `ventas` (
 --
 
 INSERT INTO `ventas` (`idVenta`, `fechaV`, `totalV`, `idUser`, `cliente`, `estado`) VALUES
-(5, '2022-02-08', '0.00', 1, 'Francisco Javier Gonzalez', 'pendiente'),
-(6, '2022-02-08', '0.00', 1, 'Matias Mereles', 'pendiente'),
-(8, '2022-02-08', '0.00', 1, 'Aurora Lopez', 'pendiente'),
-(9, '2022-02-08', '0.00', 1, 'mati feo', 'pendiente'),
-(10, '2022-02-08', '0.00', 1, 'negro negro', 'pendiente'),
-(11, '2022-02-08', '0.00', 1, 'hola', 'pendiente');
+(5, '2022-02-08', '1824.52', 1, 'Francisco Javier Gonzalez', 'PAGADO'),
+(6, '2022-02-08', '3929.66', 1, 'Matias Mereles', 'PAGADO'),
+(8, '2022-02-08', '1607.50', 1, 'Aurora Lopez', 'PAGADO'),
+(9, '2022-02-08', '607.50', 1, 'mati feo', 'PAGADO'),
+(10, '2022-02-08', '1106.49', 1, 'negro negro', 'PAGADO'),
+(11, '2022-02-08', '1607.50', 1, 'hola', 'PAGADO'),
+(12, '2022-02-09', '108.51', 1, 'Jesus Aguero', 'PAGADO'),
+(13, '2022-02-10', '5550.00', 1, 'adri', 'PAGADO'),
+(14, '2022-02-10', '4400.00', 1, 'el doc', 'PAGADO');
 
 --
 -- Índices para tablas volcadas
@@ -378,7 +408,7 @@ ALTER TABLE `categoria`
 -- AUTO_INCREMENT de la tabla `detalleventa`
 --
 ALTER TABLE `detalleventa`
-  MODIFY `idDetalleVenta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `idDetalleVenta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT de la tabla `entrada`
@@ -414,13 +444,13 @@ ALTER TABLE `proveedores`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `ventas`
 --
 ALTER TABLE `ventas`
-  MODIFY `idVenta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `idVenta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
