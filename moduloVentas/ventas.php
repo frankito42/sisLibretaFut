@@ -13,8 +13,9 @@ if(!isset($_SESSION['user'])){
     <link rel="stylesheet" href="../mdb/css/bootstrap.min.css">
     <link rel="stylesheet" href="../mdb/css/mdb.min.css">
     <link rel="stylesheet" href="../mdb/css/all.min.css">
+    <link rel="stylesheet" href="toastr.min.css">
     <title>Inicio</title>
-</head>
+</head> 
 <body>
     <section>
         <nav class="mb-1 navbar navbar-expand-lg navbar-dark info-color">
@@ -262,6 +263,7 @@ if(!isset($_SESSION['user'])){
 <script src="../mdb/js/bootstrap.min.js"></script>
 <script src="../mdb/js/mdb.min.js"></script>
 <script src="../mdb/js/all.min.js"></script>
+<script src="js/toastr.min.js"></script>
 <script src="js/ventas.js"></script>
 <script src="script.js"></script>
 </html>
