@@ -72,7 +72,7 @@ if(!isset($_SESSION['user'])){
             <?php
 
 }
-
+ 
 ?>
             </ul>
             <ul class="navbar-nav ml-auto">
@@ -285,5 +285,5 @@ if(!isset($_SESSION['user'])){
 <script src="../mdb/js/all.min.js"></script>
 <script src="js/toastr.min.js"></script>
 <script src="js/ventas.js"></script>
-<script src="script.js"></script>
+<!-- <script src="script.js"></script> -->
 </html>

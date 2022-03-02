@@ -1,7 +1,8 @@
 <?php
 session_start();
 require "../../conn/conn.php";
-    $sqlInsertCliente="SELECT * FROM `ventas` where estado='PENDIENTE'";
+    $sqlInsertCliente="SELECT v.`idVenta`,v.`fechaV`,v.`cliente`,u.user FROM `ventas`=v 
+    JOIN users =u ON u.id=v.`idUser` where v.estado='PENDIENTE'";
     $cliente=$conn->prepare($sqlInsertCliente);
     $cliente->execute();
     $cliente=$cliente->fetchAll(PDO::FETCH_ASSOC);
