@@ -19,14 +19,14 @@ if(!isset($_SESSION['user'])){
 <body>
     <section>
         <nav class="mb-1 navbar navbar-expand-lg navbar-dark info-color">
-        <a class="navbar-brand" href="#">FULL5</a>
+        <a class="navbar-brand" href="#">NDISTRIBUCIONES</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4" aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
             <ul class="navbar-nav mr-auto">
             <?php
-              if ($_SESSION['user']['user']=='admin') {
+              if ($_SESSION['user']['admin']==1) {
              
               
               
@@ -57,7 +57,7 @@ if(!isset($_SESSION['user'])){
                 <a class="nav-link waves-effect waves-light" href="ventas.php">ventas</a>
             </li>
             <?php
-             if ($_SESSION['user']['user']=='admin') {
+             if ($_SESSION['user']['admin']==1) {
              
             ?>
             <li class="nav-item dropdown">
@@ -256,14 +256,29 @@ if(!isset($_SESSION['user'])){
         </button>
       </div>
       <div class="modal-body">
-        <div class="md-form">
-          <input type="text" required id="nombre" name="nombre" class="form-control">
-          <label for="nombre">Nombre</label>
+        <div class="row">
+          <div class="col">
+            <div class="md-form">
+              <input type="text" required id="nombre" name="nombre" class="form-control">
+              <label for="nombre">Nombre</label>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="md-form">
+              <input type="text" id="cords" name="cords" class="form-control">
+              <label for="cords">cordenadas</label>
+            </div>
+          </div>
+          <div class="col">
+            <a onclick="obtenerUbi()" class="btn btn-blue">ubicacion</a>
+          </div>
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-        <button type="submit" class="btn btn-primary">Guardar</button>
+        <button id="diss" type="submit" class="btn btn-primary">Guardar</button>
       </div>
       </form>
     </div>

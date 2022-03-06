@@ -50,7 +50,7 @@ $proveedores=$proveedores->fetchAll(PDO::FETCH_ASSOC);
     <header>
       <section>
           <nav class="mb-1 navbar navbar-expand-lg navbar-dark info-color">
-          <a class="navbar-brand" href="#">FULL5</a>
+          <a class="navbar-brand" href="#">NDISTRIBUCIONES</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4" aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
           </button>

@@ -3,12 +3,10 @@ session_start();
 if(!isset($_SESSION['user'])){
     header("location:Login/index.html");
 }
-if($_SESSION['user']['user']=='ventas'){
+if($_SESSION['user']['admin']==0){
   header("location:moduloVentas/ventas.php");
 }
-if($_SESSION['user']['user']=='ventas2'){
-  header("location:moduloVentas/ventas.php");
-}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,7 +22,7 @@ if($_SESSION['user']['user']=='ventas2'){
 <body>
     <section>
         <nav class="mb-1 navbar navbar-expand-lg navbar-dark info-color">
-        <a class="navbar-brand" href="#">FULL5</a>
+        <a class="navbar-brand" href="#">NDISTRIBUCIONES</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4" aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>

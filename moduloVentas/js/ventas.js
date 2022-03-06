@@ -153,8 +153,13 @@ $(document).ready(function(){
  
    document.getElementById("formClienteNuevo").addEventListener("submit",async (e)=>{
        e.preventDefault()
+       document.getElementById("diss").disabled="true"
+       setTimeout(() => {
+           document.getElementById("diss").disabled="false"
+       }, 3000);
        let cli=document.getElementById("nombre").value
-       await fetch("php/nuevoCliente.php?cli="+cli)
+       let latLong=document.getElementById("cords").value
+       await fetch("php/nuevoCliente.php?cli="+cli+"&latLong="+latLong)
     .then(respuesta => respuesta.json())
     .then(data => {
               console.log(data)
@@ -170,8 +175,10 @@ $(document).ready(function(){
               console.log(data)
               let elementos=``
               let suma=0
+              let ubi
                for  (let index = 0; index < data.length; index++) {
                    suma=0
+                   ubi=(data[index].latLong=="")?`<a class="no btn btn-sm danger-color-dark" disabled="true">Sin ubicacion</a>`:`<a class="no btn btn-sm btn-blue" href="https://maps.google.com/?q=${data[index].latLong}">Ubicacion</a>`
                 elementos+=`
                 <div onclick="abrirModalProductos(${data[index].idVenta},event)" class="col-md-4">
                     <div style="margin-bottom: 3%;" class="card">
@@ -183,7 +190,12 @@ $(document).ready(function(){
                                 <div class="col">
                                     <h6 style="font-weight: bold;background: #33b5e5;PADDING: 2%;border-radius: 5px;color: white;" class="card-title">cliente: ${data[index].cliente}</h6>
                                 </div>
-                            </div>
+                            </div>                                
+                            <div class="row">
+                                <div class="col">
+                                ${ubi}
+                                </div>
+                            </div>                                
                         <hr>`
                 
                         await fetch("php/articulosDeCliente.php?id="+data[index].idVenta)
@@ -265,6 +277,21 @@ async function pagarTodo(idCli) {
       await cargarClientes()
       toastr.success('Articulos pagados!', 'Exito.')
     });
+}
+
+function obtenerUbi() {
+    if(navigator.geolocation){
+        let success = function(position){
+        let latitud = position.coords.latitude,
+            longitud = position.coords.longitude;
+            console.log("lat "+latitud+" "+"long "+longitud)
+            document.getElementById("cords").value=latitud+","+longitud
+            document.getElementById("cords").focus()
+        }
+        navigator.geolocation.getCurrentPosition(success, function(msg){
+        console.error( msg );
+        });
+    }
 }
 
 
