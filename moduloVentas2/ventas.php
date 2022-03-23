@@ -13,9 +13,8 @@ if(!isset($_SESSION['user'])){
     <link rel="stylesheet" href="../mdb/css/bootstrap.min.css">
     <link rel="stylesheet" href="../mdb/css/mdb.min.css">
     <link rel="stylesheet" href="../mdb/css/all.min.css">
-    <link rel="stylesheet" href="toastr.min.css">
     <title>Inicio</title>
-</head> 
+</head>
 <body>
     <section>
         <nav class="mb-1 navbar navbar-expand-lg navbar-dark info-color">
@@ -25,12 +24,6 @@ if(!isset($_SESSION['user'])){
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
             <ul class="navbar-nav mr-auto">
-            <?php
-              if ($_SESSION['user']['admin']==1) {
-             
-              
-              
-              ?>
             <li class="nav-item">
                 <a class="nav-link waves-effect waves-light" href="../index.php">inicio
                 <span class="sr-only">(current)</span>
@@ -48,35 +41,21 @@ if(!isset($_SESSION['user'])){
             <li class="nav-item">
                 <a class="nav-link waves-effect waves-light" href="../moduloCompras/compras.php">Compras</a>
             </li>
-            <?php
-
-              }
-              
-              ?>
-            <li class="nav-item active">
-                <a class="nav-link waves-effect waves-light" href="ventas.php">Pedidos</a>
-            </li>
             <li class="nav-item">
-                <a class="nav-link waves-effect waves-light" href="../moduloVentas2/ventas.php">Ventas</a>
+                <a class="nav-link waves-effect waves-light" href="../moduloVentas/ventas.php">Pedidos</a>
             </li>
-            <?php
-             if ($_SESSION['user']['admin']==1) {
-             
-            ?>
+            <li class="nav-item active">
+                <a class="nav-link waves-effect waves-light" href="ventas.php">Ventas</a>
+            </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin
                 </a>
                 <div class="dropdown-menu dropdown-default" aria-labelledby="navbarDropdownMenuLink-3">
                 <a class="dropdown-item waves-effect waves-light" href="../moduloProvedor/provedor.php">Proveedores</a>
-                <!-- <a class="dropdown-item waves-effect waves-light" href="../moduloLaboratorios/laboratorios.php">Laboratorios</a> -->
-                <a class="dropdown-item waves-effect waves-light" href="../moduloVentasDetalle/todasLasVentas.php">Caja</a>
+<!--                 <a class="dropdown-item waves-effect waves-light" href="../moduloLaboratorios/laboratorios.php">Laboratorios</a>
+ -->                <a class="dropdown-item waves-effect waves-light" href="../moduloVentasDetalle/todasLasVentas.php">Caja</a>
                 </div>
             </li>
-            <?php
-
-}
- 
-?>
             </ul>
             <ul class="navbar-nav ml-auto">
             <li class="nav-item">
@@ -103,42 +82,23 @@ if(!isset($_SESSION['user'])){
     </section>
     <section>
         <div class="container">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalNuevoCliente">Nuevo Cliente</button>
-        <div id="clientes" class="row">
-          <!-- row -->
-            <div class="col-md-4">
-              <div style="margin-bottom: 3%;" class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Panel title</h5>
-                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                </div>
-              </div>
+            <button class="btn btn-blue" data-toggle="modal" data-target="#mostarProductElegir">Buscar por nombre</button>
+            <br>
+            <div class="row">
+                    <div class="col-8">
+                        <div class="md-form md-outline input-with-pre-icon">
+                        <!-- <i class="fas fa-envelope  input-prefix"></i> -->
+                        <i class="fas fa-barcode input-prefix"></i>
+                        <input autofocus style="font-size: 125%;" type="number" id="codigoDeBarra" class="form-control">
+                        <label for="codigoDeBarra">Codigo de barra</label>
+                        </div> 
+                    </div>
+                    <div class="col">
+                        <button id="btnEscanear" class="btn btn-blue btn-sm"><i class="fas fa-camera fa-3x"></i></button>  
+                    </div>
             </div>
-            <!-- row -->
-        </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <!-- <button class="btn btn-blue" data-toggle="modal" data-target="#mostarProductElegir">Buscar por nombre</button>
-            <br> -->
-          
             
-         <!--    <div class="table-responsive">
+            <div class="table-responsive">
                 <table class="table table-sm table-hover">
                     <thead>
                         <th>Nombre</th>
@@ -156,8 +116,8 @@ if(!isset($_SESSION['user'])){
                         <td></td>
                     </tfoot>
                 </table>
-            </div>  -->
-           <!--  <button id="btnGuardarVenta" class="btn btn-blue">Imprimir ticket</button> -->
+            </div> 
+            <button id="btnGuardarVenta" class="btn btn-blue">Imprimir ticket</button>
         </div>
     </section>
     
@@ -205,12 +165,7 @@ if(!isset($_SESSION['user'])){
   <div class="modal-dialog modal-dialog-scrollable" role="document">
     <div class="modal-content">
       <div style="background: #2db6e8;color: white;" class="modal-header">
-        <div class="md-form md-outline input-with-pre-icon">
-                        <!-- <i class="fas fa-envelope  input-prefix"></i> -->
-                        <i class="fas fa-barcode input-prefix"></i>
-                        <input style="font-size: 125%;" type="number" id="codigoDeBarra" class="form-control">
-                        <label for="codigoDeBarra">Codigo de barra</label>
-                        </div> 
+        <h5 class="modal-title" id="exampleModalLabel">Productos</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -225,8 +180,8 @@ if(!isset($_SESSION['user'])){
                     <thead>
                         <tr> 
                         <th scope="col">Nombre</th>
-                        <th scope="col">Precio</th>
-                        <th scope="col">ADD</th>
+                        <th scope="col">Precio por Menor</th>
+                        <th scope="col">Precio por Mayor</th>
                         </tr>
                     </thead>
                     <tbody id="aquiMostrarTodo">
@@ -241,59 +196,6 @@ if(!isset($_SESSION['user'])){
   </div>
 </div>
 <!-- ////////////////////////////////////MODAL MODAL MODAL MODAL//////////////////////////////// -->
-<!-- ////////////////////////////////////MODAL MODAL MODAL MODAL//////////////////////////////// -->
-<!-- ////////////////////////////////////MODAL MODAL MODAL MODAL//////////////////////////////// -->
-<!-- ////////////////////////////////////MODAL MODAL MODAL MODAL//////////////////////////////// -->
-<!-- ////////////////////////////////////MODAL MODAL MODAL MODAL//////////////////////////////// -->
-<!-- ////////////////////////////////////MODAL MODAL MODAL MODAL//////////////////////////////// -->
-<!-- ////////////////////////////////////MODAL MODAL MODAL MODAL//////////////////////////////// -->
-<div class="modal fade" id="modalNuevoCliente" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <form id="formClienteNuevo">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Nuevo Cliente</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="row">
-          <div class="col">
-            <div class="md-form">
-              <input type="text" required id="nombre" name="nombre" class="form-control">
-              <label for="nombre">Nombre</label>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col">
-            <div class="md-form">
-              <input type="text" id="cords" name="cords" class="form-control">
-              <label for="cords">cordenadas</label>
-            </div>
-          </div>
-          <div class="col">
-            <a onclick="obtenerUbi()" class="btn btn-blue">ubicacion</a>
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-        <button id="diss" type="submit" class="btn btn-primary">Guardar</button>
-      </div>
-      </form>
-    </div>
-  </div>
-</div>
-<!-- ////////////////////////////////////MODAL MODAL MODAL MODAL//////////////////////////////// -->
-<!-- ////////////////////////////////////MODAL MODAL MODAL MODAL//////////////////////////////// -->
-<!-- ////////////////////////////////////MODAL MODAL MODAL MODAL//////////////////////////////// -->
-<!-- ////////////////////////////////////MODAL MODAL MODAL MODAL//////////////////////////////// -->
-<!-- ////////////////////////////////////MODAL MODAL MODAL MODAL//////////////////////////////// -->
-<!-- ////////////////////////////////////MODAL MODAL MODAL MODAL//////////////////////////////// -->
-<!-- ////////////////////////////////////MODAL MODAL MODAL MODAL//////////////////////////////// -->
     </section>
     
 </body>
@@ -301,7 +203,6 @@ if(!isset($_SESSION['user'])){
 <script src="../mdb/js/bootstrap.min.js"></script>
 <script src="../mdb/js/mdb.min.js"></script>
 <script src="../mdb/js/all.min.js"></script>
-<script src="js/toastr.min.js"></script>
 <script src="js/ventas.js"></script>
-<!-- <script src="script.js"></script> -->
+<script src="script.js"></script>
 </html>

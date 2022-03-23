@@ -47,7 +47,10 @@ $categoriasAll=$categoriasAll->fetchAll(PDO::FETCH_ASSOC);
                 <a class="nav-link waves-effect waves-light" href="../moduloCompras/compras.php">Compras</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link waves-effect waves-light" href="../moduloVentas/ventas.php">ventas</a>
+                <a class="nav-link waves-effect waves-light" href="../moduloVentas/ventas.php">Pedidos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link waves-effect waves-light" href="../moduloVentas2/ventas.php">Ventas</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin
